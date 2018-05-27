@@ -8,7 +8,7 @@ You can combine vImage operations with AVFoundation to process individual video 
 
 The example below shows how an image (top) is split into luminance (bottom left), Cb chrominance (bottom middle), and Cr chrominance (bottom right) channels:
 
-![Photos showing an image separated into luminance and chrominance channels.](Documentation/yCbCr.png)
+![Photos showing an image separated into luminance and chrominance channels.](Documentation/AVCaptureSession_2x.png)
 
 This sample walks you through the steps for applying a histogram equalization operation to a video sample buffer:
 
@@ -65,7 +65,7 @@ func captureOutput(_ output: AVCaptureOutput,
                    didOutput sampleBuffer: CMSampleBuffer,
                    from connection: AVCaptureConnection) {
     
-    guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
+    guard let pixelBuffer = sampleBuffer.imageBuffer else {
         return
     }
     
@@ -130,8 +130,8 @@ In this example, the converter requires two source buffers that represent separa
 ``` swift
 if sourceBuffers.isEmpty {
     let numberOfSourceBuffers = Int(vImageConverter_GetNumberOfSourceBuffers(converter!))
-    sourceBuffers = [vImage_Buffer](repeating:vImage_Buffer(),
-                                    count:numberOfSourceBuffers)
+    sourceBuffers = [vImage_Buffer](repeating: vImage_Buffer(),
+                                    count: numberOfSourceBuffers)
 }
 ```
 

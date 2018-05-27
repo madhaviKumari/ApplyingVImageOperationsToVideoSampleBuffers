@@ -16,7 +16,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     var cgImageFormat = vImage_CGImageFormat(
         bitsPerComponent: 8,
         bitsPerPixel: 32,
-        colorSpace:  nil,
+        colorSpace: nil,
         bitmapInfo: CGBitmapInfo(rawValue: CGImageAlphaInfo.noneSkipFirst.rawValue),
         version: 0,
         decode: nil,
@@ -85,7 +85,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                        didOutput sampleBuffer: CMSampleBuffer,
                        from connection: AVCaptureConnection) {
         
-        guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
+        guard let pixelBuffer = sampleBuffer.imageBuffer else {
             return
         }
         
@@ -123,8 +123,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         
         if sourceBuffers.isEmpty {
             let numberOfSourceBuffers = Int(vImageConverter_GetNumberOfSourceBuffers(converter!))
-            sourceBuffers = [vImage_Buffer](repeating:vImage_Buffer(),
-                                            count:numberOfSourceBuffers)
+            sourceBuffers = [vImage_Buffer](repeating: vImage_Buffer(),
+                                            count: numberOfSourceBuffers)
         }
         
         error = vImageBuffer_InitForCopyFromCVPixelBuffer(
