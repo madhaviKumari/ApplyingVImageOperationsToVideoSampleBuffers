@@ -31,13 +31,16 @@ let captureSession = AVCaptureSession()
 func configureSession() {
     captureSession.sessionPreset = AVCaptureSession.Preset.photo
     
-    let backCamera = AVCaptureDevice.default(for: AVMediaType.video)
+    guard let backCamera = AVCaptureDevice.default(for: .video) else {
+            statusLabel.text = "Can't create default camera."
+            return
+    }
     
     do {
-        let input = try AVCaptureDeviceInput(device: backCamera!)
+        let input = try AVCaptureDeviceInput(device: backCamera)
         captureSession.addInput(input)
     } catch {
-        print("can't access camera")
+        statusLabel.text = "Can't create AVCaptureDeviceInput."
         return
     }
     
@@ -65,7 +68,7 @@ func captureOutput(_ output: AVCaptureOutput,
                    didOutput sampleBuffer: CMSampleBuffer,
                    from connection: AVCaptureConnection) {
     
-    guard let pixelBuffer = sampleBuffer.imageBuffer else {
+    guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
         return
     }
     
@@ -104,15 +107,19 @@ if converter == nil {
     vImageCVImageFormat_SetColorSpace(cvImageFormat,
                                       CGColorSpaceCreateDeviceRGB())
     
-    let unmanagedConverter = vImageConverter_CreateForCVToCGImageFormat(
-        cvImageFormat,
-        &cgImageFormat,
-        nil,
-        vImage_Flags(kvImageNoFlags),
-        &error)!
+    vImageCVImageFormat_SetChromaSiting(cvImageFormat,
+                                        kCVImageBufferChromaLocation_Center)
     
-    guard error == kvImageNoError else {
-        return
+    guard
+        let unmanagedConverter = vImageConverter_CreateForCVToCGImageFormat(
+            cvImageFormat,
+            &cgImageFormat,
+            nil,
+            vImage_Flags(kvImagePrintDiagnosticsToConsole),
+            &error),
+        error == kvImageNoError else {
+            print("vImageConverter_CreateForCVToCGImageFormat error:", error)
+            return
     }
     
     converter = unmanagedConverter.takeRetainedValue()
@@ -221,6 +228,7 @@ let cgImage = vImageCreateCGImageFromBuffer(
 
 if let cgImage = cgImage, error == kvImageNoError {
     DispatchQueue.main.async {
+        self.statusLabel.text = ""
         self.imageView.image = UIImage(cgImage: cgImage.takeRetainedValue())
     }
 }

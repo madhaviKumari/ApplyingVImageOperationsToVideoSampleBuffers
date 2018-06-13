@@ -24,8 +24,8 @@
 		3EAAEE822004BD1800C09FC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3EAAEE842004BD1800C09FC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3EF2855920B8D011007F13D2 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		41E4365041E6D5B000000001 /* SampleCode.xcconfig */ = {isa = PBXFileReference; name = SampleCode.xcconfig; path = Configuration/SampleCode.xcconfig; sourceTree = "<group>"; };
-		4386A3C04386A68000000001 /* LICENSE.txt */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE.txt; sourceTree = "<group>"; };
+		8844332088442D8000000001 /* SampleCode.xcconfig */ = {isa = PBXFileReference; name = SampleCode.xcconfig; path = Configuration/SampleCode.xcconfig; sourceTree = "<group>"; };
+		8A056BD08A056E9000000001 /* LICENSE.txt */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,8 +45,8 @@
 				3EF2855920B8D011007F13D2 /* README.md */,
 				3EAAEE772004BD1800C09FC1 /* VideoCaptureSample */,
 				3EAAEE762004BD1800C09FC1 /* Products */,
-				41E7E36041E7F57000000001 /* Configuration */,
-				43869DD043869DA000000001 /* LICENSE */,
+				884437B08844399000000001 /* Configuration */,
+				8A058EE08A01BB5000000001 /* LICENSE */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,18 +71,18 @@
 			path = VideoCaptureSample;
 			sourceTree = "<group>";
 		};
-		41E7E36041E7F57000000001 /* Configuration */ = {
+		884437B08844399000000001 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
-				41E4365041E6D5B000000001 /* SampleCode.xcconfig */,
+				8844332088442D8000000001 /* SampleCode.xcconfig */,
 			);
 			name = Configuration;
 			sourceTree = "<group>";
 		};
-		43869DD043869DA000000001 /* LICENSE */ = {
+		8A058EE08A01BB5000000001 /* LICENSE */ = {
 			isa = PBXGroup;
 			children = (
-				4386A3C04386A68000000001 /* LICENSE.txt */,
+				8A056BD08A056E9000000001 /* LICENSE.txt */,
 			);
 			name = LICENSE;
 			path = LICENSE;
@@ -192,7 +192,7 @@
 /* Begin XCBuildConfiguration section */
 		3EAAEE852004BD1800C09FC1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 41E4365041E6D5B000000001 /* SampleCode.xcconfig */;
+			baseConfigurationReference = 8844332088442D8000000001 /* SampleCode.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -252,7 +252,7 @@
 		};
 		3EAAEE862004BD1800C09FC1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 41E4365041E6D5B000000001 /* SampleCode.xcconfig */;
+			baseConfigurationReference = 8844332088442D8000000001 /* SampleCode.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -305,7 +305,7 @@
 		};
 		3EAAEE882004BD1800C09FC1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 41E4365041E6D5B000000001 /* SampleCode.xcconfig */;
+			baseConfigurationReference = 8844332088442D8000000001 /* SampleCode.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -323,7 +323,7 @@
 		};
 		3EAAEE892004BD1800C09FC1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 41E4365041E6D5B000000001 /* SampleCode.xcconfig */;
+			baseConfigurationReference = 8844332088442D8000000001 /* SampleCode.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
